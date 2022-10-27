@@ -20,7 +20,7 @@ next();
 })
 
 app.get('/api/nasdaq/:symbol', (req, res)=>{
-  let fetchApi = await fetchAPI(req.symbol);
+  let fetchApi = fetchAPI(req.symbol);
   res.json(fetchApi);
 });
 
