@@ -10,12 +10,12 @@ class Nasdaq {
     }
 
     async getNasdaq(){
-        if(this){
-            return this;
+        if(this.nasdaq){
+            return this.nasdaq;
         }
         const fn = './files/basicNasdaq.json'
-        this = await reader.readJSON(fn)
-        return this;
+        this.nasdaq = await reader.readJSON(fn)
+        return this.nasdaq;
     }
 }
 
