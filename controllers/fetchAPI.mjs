@@ -1,5 +1,5 @@
 import key from './keys.mjs';
-const fetch = require("node-fetch");
+import * as fetch from 'node-fetch';
 
 export function fetchAPI(symbol) {
   let content;
