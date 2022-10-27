@@ -5,7 +5,7 @@ const nasdaq = new Nasdaq();
 let jsonFile = await nasdaq.getNasdaq();
 const app = express();
 const port = 3000;
-//static public 
+//static public that the web server will use
 app.use(express.static('public'));
 
 app.get('/api', (req, res)=>{
@@ -19,6 +19,7 @@ req.symbol = modified;
 next();
 })
 
+//route to fetch an api for a specific symbol
 app.get('/api/nasdaq/:symbol', (req, res)=>{
   let fetchApi = fetchAPI(req.symbol);
   res.json(fetchApi);
