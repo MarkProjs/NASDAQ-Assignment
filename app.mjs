@@ -13,9 +13,10 @@ app.get('/api', (req, res)=>{
 });
 
 //route to fetch an api for a specific symbol
-app.get('/api/nasdaq/:symbol', (req, res)=>{
-  let fetchApi = fetchAPI(req.symbol);
-  res.json(fetchApi);
+app.get('/api/nasdaq/:symbol', async (req, res)=>{
+  let result = await fetchAPI(req.params.symbol)
+  console.log(result)
+  res.json(result)
 });
 
 
