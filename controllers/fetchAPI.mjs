@@ -1,16 +1,14 @@
-import { key } from './keys.mjs';
+import {key} from './keys.mjs';
 import fetch from 'node-fetch';
 
-async function fetchAPI(symbol) {
-  const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key['key']}`;
+export async function fetchAPI(symbol) {
+  let url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key['key']}`
+  let response = await fetch(url);
   let content;
-  let resp = await fetch(url);
-  if(resp.ok){
-    content = resp.json();
+  if(response.ok) {
+    content = await response.json();
   } else {
-    console.log(`Status code: ${resp.status}`);
+    throw new Error("Status code: " + response.status);
   }
-  return content;
+  return content
 }
-
-export {fetchAPI};
