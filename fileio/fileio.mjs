@@ -3,16 +3,16 @@ import * as checkFile from './checkFile.mjs';
 
 async function readFile(path) {
   if(await checkFile.checkAccess(path)) {
-      if (await checkFile.checkIfFile(path)) {
-          try {
-              let data = fs.readFile(path, "utf-8");
-              return data;
-          }catch(err) {
-              console.error(err);
-          }
-          
+    if (await checkFile.checkIfFile(path)) {
+      try {
+        let data = fs.readFile(path, "utf-8");
+        return data;
+      }catch(err) {
+        console.error(err);
       }
-      throw new Error("Something went wrong when trying to read the file");
+          
+    }
+    throw new Error("Something went wrong when trying to read the file");
   }
 }
 
@@ -23,11 +23,11 @@ async function readFile(path) {
  */
 async function readJSON(path) {
   try {
-      let data = await readFile(path);
-      return JSON.parse(data);
+    let data = await readFile(path);
+    return JSON.parse(data);
   } catch (error) {
-      console.error(error);
-      return "";
+    console.error(error);
+    return "";
   }
 }
 

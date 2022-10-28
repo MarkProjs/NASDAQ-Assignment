@@ -11,5 +11,5 @@ export function fetchAPI(symbol) {
         throw new Error ("Status code: " + response.status);
       }
     });
- return content;
+  return content;
 }
