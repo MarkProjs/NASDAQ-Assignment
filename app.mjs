@@ -12,13 +12,6 @@ app.get('/api', (req, res)=>{
   res.json(jsonFile);
 });
 
-//middleware to put the  route parameter to be uppercase
-app.param('symbol', (req, res, next, symbol)=>{
-const modified = symbol.toUpperCase();
-req.symbol = modified;
-next();
-})
-
 //route to fetch an api for a specific symbol
 app.get('/api/nasdaq/:symbol', (req, res)=>{
   let fetchApi = fetchAPI(req.symbol);
