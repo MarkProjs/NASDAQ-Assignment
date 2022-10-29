@@ -9,7 +9,7 @@ async function setup(){
 }
 
 async function getData(){
-    let url = 'https://localhost:3000/api'
+    let url = 'http://localhost:3000/api'
     let response = await fetch(url);
     let content;
     if(response.ok) {
@@ -24,10 +24,9 @@ async function getData(){
 
 function populateDatalist(json) {
     let datalist = document.querySelector('#symbols')
-    for (const element of json){
-        console.log(element['symbol'])
+    for (let element of json){
         let newData = document.createElement('option')
-        newData.setAttribute("value", element['symbol'])
+        newData.value = element.symbol
         datalist.appendChild(newData)
     }
 }
