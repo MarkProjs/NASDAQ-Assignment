@@ -1,13 +1,20 @@
 document.addEventListener("DOMContentLoaded", setup)
 
+//submit button
 let button = document.querySelector("#submit");
 
+/**
+ * function to call if the DOM is loaded
+ */
 async function setup(){
     await getData().catch(e => {
         console.error(e.message)
     });
 }
 
+/**
+ * function that fetches the whole json and pass it to the populateDatalist function
+ */
 async function getData(){
     let url = 'http://localhost:3000/api'
     let response = await fetch(url);
@@ -22,6 +29,10 @@ async function getData(){
     populateDatalist(content);
 }
 
+/**
+ * function that populates the datalist in which the dropdown contains the symbols
+ * @param {object} json 
+ */
 function populateDatalist(json) {
     let datalist = document.querySelector('#symbols');
     for (let element of json){
@@ -31,6 +42,7 @@ function populateDatalist(json) {
     }
 }
 
+//Event listner for the submit button
 button.addEventListener("click", () => {
     let nasdaq = document.querySelector("#symbol-choice").value;
     fetchStock(nasdaq)
@@ -41,6 +53,10 @@ button.addEventListener("click", () => {
       });
 })
 
+/**
+ * async function that fetches the api necessary for a stock
+ * @param {string} nasdaq 
+ */
 async function fetchStock(nasdaq) {
     let url = `http://localhost:3000/api/nasdaq/${nasdaq}`;
     let resp = await fetch(url);
@@ -55,6 +71,11 @@ async function fetchStock(nasdaq) {
     currentPriceStock(content, nasdaq);
 }
 
+/**
+ * function that changes the paragraph whether it shows the current price of a certain stock or it shows en error
+ * @param {Object} content 
+ * @param {string} nasdaq 
+ */
 async function currentPriceStock(content, nasdaq) {
     let currentPrice = document.querySelector('#current_price');
     if (content.c > 0){
