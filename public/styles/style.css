@@ -1,5 +1,34 @@
 
 body {
   background-image: url('../images/background.webp');
-  background-size: cover;  
+  background-size: cover;
+  display:flex; 
+  flex-direction:column; 
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#symbol-choice {
+  height: 30px;
+}
+
+.content {
+  background-color: gray;
+}
+
+#symbol_submit {
+  display:flex; 
+  justify-content: center;
+}
+
+#submit {
+  
+}
+#current_price{
+  color: greenyellow;
+  text-align: center;
+}
+#link {
+  color: white;
+  text-align: center;
 }
