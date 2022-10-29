@@ -5,15 +5,19 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles/style.css">
     <script src="scripts/script.js"></script>
-    <title></title>
+    <title>Stock Quotes</title>
 </head>
 
 <body>
-     
-    <input list="symbols" id="symbol-choice" name="symbol-choice">
+     <div class="content">
+        <input list="symbols" id="symbol-choice" name="symbol-choice">
+        <datalist id="symbols">
+        </datalist>
+        <button type="button" id="submit">Go!</button>
+     </div>
+    
+    <p id="current_price">Current Stock Price</p>
 
-    <datalist id="symbols">
-        
-    </datalist>
+    <p id="finnhub_link">Real-time stock quotes from <a href="https://finnhub.io/">finnhub.io</a></p>
 </body>
 </html>
