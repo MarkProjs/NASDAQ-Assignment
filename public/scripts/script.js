@@ -33,8 +33,18 @@ function populateDatalist(json) {
 
 async function fetchStock(nasdaq) {
     let url = `http://localhost:3000/api/nasdaq/${nasdaq}`;
-    
+    let resp = await fetch(url);
+    let content;
+    if(resp.ok) {
+        content = await resp.json();
+    }
+    else {
+        throw new Error("Status code: " + resp.status);
+    }
+
+    return content;
 }
+
 function currentPriceStock() {
     let
 }
