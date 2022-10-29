@@ -30,3 +30,11 @@ function populateDatalist(json) {
         datalist.appendChild(newData)
     }
 }
+
+async function fetchStock(nasdaq) {
+    let url = `http://localhost:3000/api/nasdaq/${nasdaq}`;
+    
+}
+function currentPriceStock() {
+    let
+}
