@@ -4,9 +4,7 @@ let button = document.querySelector("#submit");
 
 async function setup(){
     await getData().catch(e => {
-        let errorElement = document.querySelector('#error');
-        errorElement.textContent = e.message;
-        errorElement.style.visibility = 'visible';
+        console.error(e.message)
     });
 }
 
@@ -35,7 +33,12 @@ function populateDatalist(json) {
 
 button.addEventListener("click", () => {
     let nasdaq = document.querySelector("#symbol-choice").value;
-    fetchStock(nasdaq);
+    fetchStock(nasdaq)
+    .catch((err) => {
+        let currentPrice = document.querySelector('#current_price');
+        currentPrice.textContent = "ERROR: can't have empty symbol"
+        console.error(err.message)
+      });
 })
 
 async function fetchStock(nasdaq) {
