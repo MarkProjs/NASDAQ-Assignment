@@ -1,6 +1,8 @@
 
 body {
   background-image: url('../images/background.webp');
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   background-size: cover;
   display:flex; 
   flex-direction:column; 

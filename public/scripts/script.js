@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", setup)
 
+let button = document.querySelector("#submit");
+
 async function setup(){
     await getData().catch(e => {
         let errorElement = document.querySelector('#error');
         errorElement.textContent = e.message;
-        errorElement.style.visibility = 'visible'
+        errorElement.style.visibility = 'visible';
     });
 }
 
@@ -19,17 +21,22 @@ async function getData(){
         throw new Error("Status code: " + response.status);
     }
 
-    populateDatalist(content)
+    populateDatalist(content);
 }
 
 function populateDatalist(json) {
-    let datalist = document.querySelector('#symbols')
+    let datalist = document.querySelector('#symbols');
     for (let element of json){
-        let newData = document.createElement('option')
-        newData.value = element.symbol
-        datalist.appendChild(newData)
+        let newData = document.createElement('option');
+        newData.value = element.symbol;
+        datalist.appendChild(newData);
     }
 }
+
+button.addEventListener("click", () => {
+    let nasdaq = document.querySelector("#symbol-choice").value;
+    fetchStock(nasdaq);
+})
 
 async function fetchStock(nasdaq) {
     let url = `http://localhost:3000/api/nasdaq/${nasdaq}`;
@@ -42,9 +49,15 @@ async function fetchStock(nasdaq) {
         throw new Error("Status code: " + resp.status);
     }
 
-    return content;
+    currentPriceStock(content, nasdaq);
 }
 
-function currentPriceStock() {
-    let
+async function currentPriceStock(content, nasdaq) {
+    let currentPrice = document.querySelector('#current_price');
+    if (content.c > 0){
+        currentPrice.textContent = `Current price of ${nasdaq} is: $${content.c}`
+    }
+    else{
+        currentPrice.textContent = "ERROR: Symbol not found, please try again"
+    }
 }
