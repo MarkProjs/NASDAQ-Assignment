@@ -21,6 +21,9 @@ body {
 #symbol_submit {
   display:flex; 
   justify-content: center;
+  width: fit-content;
+  margin-left: 825px;
+  padding: 15px;
 }
 
 #submit {
@@ -35,6 +38,9 @@ body {
 #current_price{
   color: greenyellow;
   text-align: center;
+  width: fit-content;
+  padding: 15px;
+  margin-left: 825px;
 }
 #link {
   color: white;
