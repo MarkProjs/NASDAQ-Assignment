@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", setup)
-
 async function setup(){
     await getData().catch(e => {
         let errorElement = document.querySelector('#error');
@@ -18,7 +17,6 @@ async function getData(){
     else {
         throw new Error("Status code: " + response.status);
     }
-
     populateDatalist(content)
 }
 
@@ -41,10 +39,24 @@ async function fetchStock(nasdaq) {
     else {
         throw new Error("Status code: " + resp.status);
     }
-
-    return content;
+    currentPriceStock(content, nasdaq);
 }
 
-function currentPriceStock() {
-    let
+function currentPriceStock(content, nasdaq) {
+    let currentP = document.querySelector("#current_price")
+    if (content.c > 0) {
+        currentP.textContent = `Current price of ${nasdaq} is: ${content.c}`;
+    }
+    else {
+        currentP.textContent = `Error: THE NAME IS NOT VALID!`;
+    }
 }
+
+document.querySelector("#submit").addEventListener("click", ()=>{
+    let nasdaq = document.querySelector("#symbol-choice").value;
+    fetchStock(nasdaq)
+    .catch((err)=>{
+        let currentP = document.querySelector("#current_price");
+        
+    });
+})
