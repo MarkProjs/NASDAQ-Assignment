@@ -10,10 +10,12 @@ body {
 
 #symbol-choice {
   height: 30px;
+  border-radius: 8px;
 }
 
 .content {
   background-color: gray;
+
 }
 
 #symbol_submit {
@@ -22,7 +24,13 @@ body {
 }
 
 #submit {
-  
+  margin-top: 5px;
+  margin-left: 5px;
+  height: fit-content;
+  font-size: 14px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 12px;
 }
 #current_price{
   color: greenyellow;
