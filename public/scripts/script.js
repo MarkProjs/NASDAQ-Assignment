@@ -76,7 +76,7 @@ async function fetchStock(nasdaq) {
  * @param {Object} content 
  * @param {string} nasdaq 
  */
-async function currentPriceStock(content, nasdaq) {
+function currentPriceStock(content, nasdaq) {
     let currentPrice = document.querySelector('#current_price');
     if (content.c > 0){
         currentPrice.textContent = `Current price of ${nasdaq} is: $${content.c}`
